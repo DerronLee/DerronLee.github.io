@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>李小喜的个人主页</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <!-- modernizr enables HTML5 elements and feature detects -->
+  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+</head>
+
+<body>
+  <div id="main">
+    <header>
+      <div id="logo">
+        <h1><a href="#">李小喜</a></h1></div>
+      <nav>
+        <ul class="lavaLampWithImage" id="lava_menu">
+          <li class="current"><a href="index.html">个人主页</a></li>
+          <li><a href="about.html">教育背景</a></li>
+          <li><a href="portfolio.html">项目及研究</a></li>
+          <li><a href="blog.html">所获荣誉</a></li>
+          <li><a href="contact.php">兴趣爱好</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="site_content">
+      <div id="sidebar_container">
+        <div class="gallery">
+          <ul class="images">
+            <li class="show"><img width="450" height="450" src="images/1.jpg" alt="photo_one" /></li>
+            <li><img width="450" height="450" src="images/2.jpg" alt="photo_two" /></li>
+            <li><img width="450" height="450" src="images/3.jpg" alt="photo_three" /></li>
+            <li><img width="450" height="450" src="images/4.jpg" alt="photo_four" /></li>
+            <li><img width="450" height="450" src="images/5.jpg" alt="photo_five" /></li>
+          </ul>
+        </div>
+      </div>
+	  
+      <div id="content">
+        <h1>欢迎来到李小喜的个人主页</h1>
+        <p>（该主页内容更新至2016年）</p>
+        <p><b>在读研究生</b></p>
+        <p><b>所在高校：</b>中国科学技术大学</p>
+        <p><b>Email：</b>derron.li@outlook.com</p>
+        <p><b>微信：</b>DerronLee</p>
+        <p><b>Skype：</b>Derron__Lee</p>
+        <p><b>联系地址：</b>中国安徽省合肥市黄山路443号（科大西区）</p>
+        <p><b>邮编：</b>230027</p>
+        <p><a href="http://202.38.64.10/~lixiaoxi/CV_zh.pdf">附件1：个人简历(2016)</a></br>
+          <a href="http://202.38.64.10/~lixiaoxi/CV_en.pdf">附件2：Curriculum Vitae(2016)</a></br>
+          <a href="http://202.38.64.10/~lixiaoxi/CV_zh_2022.pdf">附件3：个人简历(2022)</a></p>
+      </div>
+    </div>
+    <footer>
+      <p><a href="index.html">个人主页</a> | <a href="about.html">教育背景</a> | <a href="portfolio.html">项目及研究</a> | <a href="blog.html">所获荣誉</a> | <a href="contact.php">兴趣爱好</a></p>
+      <p>&copy; All Rights Reserved. | <a href="http://202.38.64.10/~lixiaoxi/">李小喜</a>2016. </p>
+    </footer>
+  </div>
+  <!-- javascript at the bottom for fast page loading -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.easing.min.js"></script>
+  <script type="text/javascript" src="js/jquery.lavalamp.min.js"></script>
+  <script type="text/javascript" src="js/image_fade.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $("#lava_menu").lavaLamp({
+        fx: "backout",
+        speed: 700
+      });
+    });
+  </script>
+</body>
+</html>

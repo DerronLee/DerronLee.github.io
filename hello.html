@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Looking For Her</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 20px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 30px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="center-%E9%9A%8F%E7%BC%98%E4%BD%86%E8%AF%9A%E6%84%8F%E5%BE%81%E5%8F%8B"><center> <strong>随缘但诚意征友</strong></h1>
+<blockquote>
+<p>声明：该链接非病毒网址哈，敬请放心，这是科大免费提供的个人主页网址，我在原先的个人主页上加了一页，打开后可以看到地址栏里的真实网址是<a href="http://home.ustc.edu.cn/~lixiaoxi/hello.html">http://home.ustc.edu.cn/~lixiaoxi/hello.html</a>，域名中USTC是科大的缩写，后面是真实姓名，且对应科大的邮箱名，包括以下所有信息都保证是真实可靠，也希望您尊重个人隐私，别在网络传播，网络世界靠谱的人少，且充斥太多未知性，若因散播影响到个人生活会保留追究法律责任的权利哦，谢谢理解和配合哈。</p>
+</blockquote>
+<h2 id="%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF">基本信息</h2>
+<hr>
+<p>男，94戊戌狗，老家皖北，本科211，推免至中科大读研，2019年毕业，现在合肥某上市公司工作，核心部门算法岗位。</p>
+<p>为人谦和友善，比较励志，幽默风趣，热爱生活，总之性格人品这块是没问题的啦。</p>
+<h2 id="%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">兴趣爱好</h2>
+<hr>
+<p>从来不吸烟，非必要不喝酒，游戏玩过一段时间的手游吃鸡，工作后比较忙已放弃两年。学生时代的兴趣爱好比较丰富，羽毛球，台球，看英美剧，甚至还学过竹笛和跆拳道，除此之外也和朋友学习过几次游泳但是自己不争气，有机会希望能跟着教练再学一次，毕竟是项求生技能^_^。</p>
+<p>工作后空闲时间变少了，很多兴趣爱好都成为回忆，只有羽毛球是最爱，以后也会一直坚持下去，目前每周打两次左右，这已成为生活不可或缺的一部分，结实了很多有趣的球友，有些成为了好朋友。</p>
+<p>我还有个听历史的习惯，倾向于贴近正史的书籍，从周朝到清朝每个大朝代也至少都听过一到两个专辑，我记性一般，听得多但是记住的很少，有时隔一年再听一遍依然有新的精神冲击，历史让我明白人性不是非善即恶的二元世界，使我在看待人和事时会多一分理解。即便有很多历史车轮上尘埃般的小小人物，其精神气节都足以让人可歌可泣，每想到这些，只能感慨自身渺小无望在车轮上留下印记，不过人活着最重要的就是开心咯，做不到青史留名，但努力做到珍惜当下，珍惜身边人，快快乐乐生活也是不错的结果。</p>
+<h2 id="%E8%B0%88%E8%B0%88%E8%BA%AB%E9%AB%98">谈谈身高</h2>
+<hr>
+<p>身高是通过努力无法弥补的硬伤，坦白来说只有165厘米，发型和鞋子捯饬捯饬应该也差不多170吧。没有人不想长高，能做的只能默默接受现实，并在其他方面持续进步，小时候就知道学习没意识到身高问题的严重性，等到大学反应过来骨骼线已经闭合，为时已晚了，悲伤脸。</p>
+<p>曾经大体分析过身高的问题，原因大致是四个方面：遗传+青少年营养不足+成长期熬夜+个人未及时补救。基因应该不是最致命的，因为我比我爸略矮，我姐也就比我略矮一点，我估计和中学期间经常熬夜有很大联系，初中经常十点后休息，高中更是长期十二点半后休息。我有个朋友，初中期间比我矮，但他每天坚持摸高和吃鸡蛋，后来高考时我们再见面... 害都是泪。</p>
+<h2 id="%E5%B7%A5%E4%BD%9C%E5%8F%8A%E8%A7%84%E5%88%92">工作及规划</h2>
+<hr>
+<p>对自己的期望是能够自力更生，已计划在合肥定居。目前的待遇在合肥维持生活问题不大，算法研究岗，年薪30+，平时需要加班，目前是周一二四加班，周末没事也会过去，不过加班不是强制的，相对可控；房子已购，在高新区，有贷；有辆代步车。</p>
+<p>从收入来看在合肥应该算是比较可观的，不过房贷1万左右，个人对生活的态度是对质量有要求，但对是否是高端品牌并不介意，比如球拍不会买杂牌试错，但也不追求一两千的YONEX的JP版高端拍，总体来说比较偏追求质量的实用主义，收支情况距离理想中的富足小康生活差距还是挺大，以后可能还是需要两个人相互理解支持，一起奋斗，^_^。</p>
+<h2 id="%E5%AF%B9%E6%9C%AA%E6%9D%A5%E5%A5%B9%E7%9A%84%E6%9C%9F%E6%9C%9B">对未来她的期望</h2>
+<hr>
+<h3 id="%E7%A1%AC%E6%80%A7%E8%A6%81%E6%B1%82">硬性要求:</h3>
+<ol>
+<li>性别女；</li>
+<li>人在合肥，已工作；</li>
+<li>人格独立，大事能拎得清；</li>
+<li>心地善良，身体健康，性格较好；</li>
+<li>BMI小于23.5；</li>
+<li>1992年后出生；</li>
+<li>全日制本科及以上学历；</li>
+<li>身高155+，五官3分+（可理解为超过30%同性同龄人)。</li>
+</ol>
+<h3 id="%E5%85%B6%E4%BB%96%E5%8A%A0%E5%88%86%E9%A1%B9">其他加分项:</h3>
+<ol>
+<li>94后；</li>
+<li>五官5+；</li>
+<li>身材5+；</li>
+<li>皮肤白皙；</li>
+<li>身高158-170cm；</li>
+<li>BMI介于18-20.5；</li>
+<li>全日制一本学历；</li>
+<li>全日制硕士学历；</li>
+<li>勤奋；</li>
+<li>爱笑；</li>
+<li>家庭和睦；</li>
+<li>有稳定工作；</li>
+<li>有趣的灵魂；</li>
+<li>生活态度积极向上；</li>
+<li>老家从合肥出发自驾6小时内可达；</li>
+<li>情感经历简单，不多于2段恋爱经历；</li>
+<li>有正能量的兴趣爱好，如读书、运动、厨艺、琴棋书画等。</li>
+</ol>
+<p>原谅我的理科思维，个别条目可能有点奇葩，其实这17个条目很具体但并不死板，我觉得满足6-8条就已经很优秀了，毕竟感情不是条条框框筛出来的，只要相处起来彼此都舒服就可以，更看重的还是性格，两个人能够坦诚地沟通，对彼此多一份理解，在遇到困难和分歧时依然相互支持共同面对，这是我理想中家的样子。</p>
+<h2 id="%E5%86%99%E5%9C%A8%E5%90%8E%E9%9D%A2">写在后面</h2>
+<hr>
+<p>在绝大多数同学眼中，我是个典型的励志青年形象，不过我觉得我的世界远比这个标签更丰富精彩。我对自己的评价是，思想比较开明，沟通比较坦诚，为人比较理性，但也不缺情感，身高是硬伤，但还算开朗乐观，不卑不亢，能够坚持自己的人生信条和原则，至少自己这些年来过得坦荡、无悔。说这么多正面的评价，我也有缺点，就是偶尔人会比较直男，认定是正确的事情，会坚持的有点固执，不过也不是犟得拉不回来，总体上还是实事求是、就事论事，不是直男癌哈。</p>
+
+<p>我自知并非完人，也希望您也是一个平凡人，你若真心待我，我定视你如宝如花如玉，伴你左右护你周全。我平时工作比较忙，并非海王，也不养鱼，真诚征友，找到即删贴，之所以写这么多，主要是为了表露诚意，毕竟我这身高在相亲市场竞争力实在弱爆了-_-，同时也可以在文字中也透出自己的部分世界观和价值观，以便更容易找到契合的人，降低沟通成本。</p>
+<blockquote>
+<p>感谢你阅读至此，文笔不好请多包涵，您若无意可以做个路人，无妨无妨，就当看个故事罢，由于更多信息不便在网络公开，怕熟人见到尴尬*_*，若有意则可以从做朋友开始认识一下，微信DerronLee，建议附简单的个人介绍，再次感谢您的耐心，THX。</p>
+</blockquote>
+</body>
+</html>
